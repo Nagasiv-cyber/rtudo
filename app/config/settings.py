@@ -4,6 +4,7 @@ class Settings(BaseSettings):
     project_name: str
     version: str
     debug: bool = False
+    database_url: str
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
 
