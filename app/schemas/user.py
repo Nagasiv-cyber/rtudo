@@ -2,12 +2,12 @@ from pydantic import BaseModel
 from uuid import UUID
 from datetime import datetime
 from typing import Optional
-class Usercreate(BaseModel):
+class UserCreate(BaseModel):
     full_name: str
     email: str
     password: str
 
-class Userupdate(BaseModel):
+class UserUpdate(BaseModel):
     full_name: Optional[str] = None
     email: Optional[str] = None
     password: Optional[str] = None

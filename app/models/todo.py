@@ -1,6 +1,6 @@
 import uuid
 from sqlalchemy import Column, String, DateTime, ForeignKey, Text
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import Uuid
 from sqlalchemy.sql import func
 
 from app.db.session import Base
@@ -9,7 +9,7 @@ class Todo(Base):
     __tablename__ = "todos"
     
     
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, index=True)
+    id = Column(Uuid(as_uuid=True), primary_key=True, default=uuid.uuid4, index=True)
     title = Column(String, index=True, nullable=False)
     description = Column(Text, nullable=True)
     status = Column(String, default="pending")     
@@ -21,4 +21,4 @@ class Todo(Base):
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
     
     
-    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    user_id = Column(Uuid(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
